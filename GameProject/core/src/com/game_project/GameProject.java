@@ -10,10 +10,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class GameProject extends Game {
 	SpriteBatch batch;
 	public BitmapFont font;
+	boolean totouch;
 //	Texture img;
 	
 	@Override
 	public void create () {
+		totouch = true;
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		this.setScreen(new MainMenuScreen(this));
@@ -22,7 +24,7 @@ public class GameProject extends Game {
 
 	@Override
 	public void render () {
-		// it render screens!
+		// it render scre
 		super.render();
 //		Gdx.gl.glClearColor(1, 0, 0, 1);
 //		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -34,6 +36,5 @@ public class GameProject extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-//		img.dispose();
 	}
 }

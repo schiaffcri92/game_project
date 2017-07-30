@@ -14,13 +14,12 @@ public class GameScreen implements Screen {
 		this.game = game;
 		
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 480);
+		camera.setToOrtho(false, 800, 600);
 	}
 	
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Showing Game Screen");
 	}
 
 	@Override
@@ -36,9 +35,12 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Tap anywhere to go back", 100, 100);
 		game.batch.end();
 		
-		if (Gdx.input.isTouched()) {
+		if (Gdx.input.isTouched() && game.totouch) {
 			game.setScreen(new MainMenuScreen(game));
-			dispose();
+			game.totouch = false;
+		} else if (! Gdx.input.isTouched()) {
+			game.totouch = true;
+
 		}
 	}
 

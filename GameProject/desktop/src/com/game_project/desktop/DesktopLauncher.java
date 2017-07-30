@@ -8,6 +8,8 @@ public class DesktopLauncher {
 	// Yeah my new project is working now!
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = 800;
+		config.height = 600;
 		new LwjglApplication(new GameProject(), config);
 	}
 }
