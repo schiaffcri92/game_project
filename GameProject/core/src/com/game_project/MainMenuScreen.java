@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
+import com.game_project.utils.Const;
 
 public class MainMenuScreen implements Screen {
 
@@ -20,7 +21,7 @@ public class MainMenuScreen implements Screen {
 		this.game = game;
 		mainTitle = new Texture(Gdx.files.internal("menu-partials/title_pixelate.png"));
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 600);
+		camera.setToOrtho(false, Const.APP_WIDTH, Const.APP_HEIGHT);
 		mainTitleMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menuTitle.mp3"));
 		mainTitleMusic.setLooping(true);
 		mainTitleMusic.play();
