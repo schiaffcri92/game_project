@@ -6,7 +6,6 @@ import com.game_project.GameProject;
 import com.game_project.utils.Const;
 
 public class DesktopLauncher {
-	// Yeah my new project is working now!
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = Const.APP_WIDTH;

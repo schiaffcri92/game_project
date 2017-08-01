@@ -1,5 +1,7 @@
 package com.game_project.model;
 
-public interface MenuItem {
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+public interface MenuItem {
+	public void draw(SpriteBatch batch);
 }

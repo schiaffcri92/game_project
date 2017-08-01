@@ -3,6 +3,7 @@ package com.game_project;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
@@ -41,10 +42,10 @@ public class MainMenuScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		
 		game.batch.begin();
-		game.batch.draw(mainTitle,  70, 420);
+		game.batch.draw(mainTitle,  200, 300);
 //		game.batch.draw(mainTitle, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
-		game.font.draw(game.batch, "Welcome to GameProject", 100, 150);
-		game.font.draw(game.batch, "Tap anywhere to begin", 100, 100);
+		game.font.setColor(Color.BLACK);
+		game.font.draw(game.batch, "Tap anywhere to begin", 300, 180);
 		game.batch.end();
 		
 		if (Gdx.input.isTouched() && game.totouch) {

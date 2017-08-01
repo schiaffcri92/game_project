@@ -1,5 +1,9 @@
 package com.game_project.model;
 
-public class MenuOption implements MenuItem {
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+public class MenuOption implements MenuItem {
+	public void draw(SpriteBatch batch) {
+		
+	}
 }
