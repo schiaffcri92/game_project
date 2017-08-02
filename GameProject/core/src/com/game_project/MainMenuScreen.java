@@ -42,7 +42,7 @@ public class MainMenuScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		
 		game.batch.begin();
-		game.batch.draw(mainTitle,  200, 300);
+		game.batch.draw(mainTitle,  190, 450, 450, 60);
 //		game.batch.draw(mainTitle, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
 		game.font.setColor(Color.BLACK);
 		game.font.draw(game.batch, "Tap anywhere to begin", 300, 180);
