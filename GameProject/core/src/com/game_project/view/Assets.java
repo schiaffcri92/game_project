@@ -26,6 +26,8 @@ public class Assets implements Disposable, AssetErrorListener {
 	public MainTitleAsset mainTitleAsset;
 	public StartGameOptionAsset startGameOptionAsset;
 	public ExitOptionAsset exitOptionAsset;
+	public StartGameOptionSelAsset startGameOptionSelAsset;
+	public ExitOptionSelAsset exitOptionSelAsset;
 	// audio effects
 	public MainMenuMusic mainMenuMusic;
 	
@@ -40,6 +42,8 @@ public class Assets implements Disposable, AssetErrorListener {
 		this.assetManager.load(Const.MAIN_MENU_SOUND_LOCATION, Music.class);
 		this.assetManager.load(Const.START_GAME_OPTION_LOCATION, Texture.class);
 		this.assetManager.load(Const.EXIT_OPTION_LOCATION, Texture.class);
+		this.assetManager.load(Const.START_GAME_OPTION_SEL_LOCATION, Texture.class);
+		this.assetManager.load(Const.EXIT_OPTION_SEL_LOCATION, Texture.class);
 		
 		this.assetManager.finishLoading();
 		Gdx.app.debug(TAG, "# of assets loaded: " + assetManager.getAssetNames().size);
@@ -52,6 +56,13 @@ public class Assets implements Disposable, AssetErrorListener {
 		this.startGameOptionAsset = new StartGameOptionAsset(startGameTexture);
 		Texture exitTexture = this.assetManager.get(Const.EXIT_OPTION_LOCATION);
 		this.exitOptionAsset = new ExitOptionAsset(exitTexture);
+		
+		// selected versions
+		
+		Texture startGameSelTexture = this.assetManager.get(Const.START_GAME_OPTION_SEL_LOCATION);
+		this.startGameOptionSelAsset = new StartGameOptionSelAsset(startGameSelTexture);
+		Texture exitSelTexture = this.assetManager.get(Const.EXIT_OPTION_SEL_LOCATION);
+		this.exitOptionSelAsset = new ExitOptionSelAsset(exitSelTexture);
 		
 		Music mainMenuMusicM = this.assetManager.get(Const.MAIN_MENU_SOUND_LOCATION);
 		this.mainMenuMusic = new MainMenuMusic(mainMenuMusicM);
@@ -87,10 +98,26 @@ public class Assets implements Disposable, AssetErrorListener {
 		}
 	}
 	
+	public class StartGameOptionSelAsset {
+		public final Texture resource;
+		
+		public StartGameOptionSelAsset(Texture resource) {
+			this.resource = resource;
+		}
+	}
+	
 	public class ExitOptionAsset {
 		public final Texture resource;
 		
 		public ExitOptionAsset(Texture resource) {
+			this.resource = resource;
+		}
+	}
+	
+	public class ExitOptionSelAsset {
+		public final Texture resource;
+		
+		public ExitOptionSelAsset(Texture resource) {
 			this.resource = resource;
 		}
 	}

@@ -2,8 +2,10 @@ package com.game_project;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.controllers.ControllerAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.GL20;
+import com.game_project.handlers.MainMenuControllerHandler;
 import com.game_project.utils.Const;
 
 public class GameScreen implements Screen {
@@ -32,12 +34,17 @@ public class GameScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		
 		game.batch.begin();
-		game.font.draw(game.batch, "Welcome to GameProject", 100, 150);
-		game.font.draw(game.batch, "Tap anywhere to go back", 100, 100);
+//		game.font.draw(game.batch, "Welcome to GameProject", 100, 150);
+//		game.font.draw(game.batch, "Tap anywhere to go back", 100, 100);
 		game.batch.end();
 		
 		if (Gdx.input.isTouched() && game.totouch) {
-			game.setScreen(new MainMenuScreen(game));
+			MainMenuScreen mainMenuScreen = new MainMenuScreen(game);
+			ControllerAdapter listener = new MainMenuControllerHandler(mainMenuScreen);
+
+			this.game.controller.addListener(listener);
+
+			game.setScreen(mainMenuScreen);
 			game.totouch = false;
 		} else if (! Gdx.input.isTouched()) {
 			game.totouch = true;

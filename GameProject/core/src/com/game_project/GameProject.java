@@ -29,14 +29,15 @@ public class GameProject extends Game {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		Assets.instance.init(new AssetManager());
-		this.setScreen(new MainMenuScreen(this));
+		MainMenuScreen mainMenuScreen = new MainMenuScreen(this);
+		this.setScreen(mainMenuScreen);
 		
 		for (Controller controller : Controllers.getControllers()) {
 		    System.out.println(controller.getName());
 		    this.controller = controller;
 		}
-		
-		this.controller.addListener(new MainMenuControllerHandler());
+		ControllerAdapter listener = new MainMenuControllerHandler(mainMenuScreen);
+		this.controller.addListener(listener);
 //		img = new Texture("badlogic.jpg");
 	}
 	

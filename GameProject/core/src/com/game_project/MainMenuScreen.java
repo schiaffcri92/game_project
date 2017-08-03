@@ -26,8 +26,19 @@ public class MainMenuScreen implements Screen {
 	Texture exitOption;
 	MenuOption exitMenuOption;
 	
+	Texture startGameSelOption;
+	MenuOption startGameMenuSelOption;
+	
+	Texture exitSelOption;
+	MenuOption exitMenuSelOption;
+	
 	Music mainTitleMusic;
 	boolean totouch;
+	
+	public int selected_menu_item;
+	
+	public boolean start_game;
+	public boolean exit_game;
 	
 	public MainMenuScreen(final GameProject game) {
 		totouch = true;
@@ -36,13 +47,31 @@ public class MainMenuScreen implements Screen {
 		mainTitle = Assets.instance.mainTitleAsset.resource;
 		mainTitleObject = new MainTitle();
 		
-		startGameOption = Assets.instance.startGameOptionAsset.resource;
-		startGameMenuOption = new MenuOption();
-		startGameMenuOption.setItem(MenuOption.START);
+		this.selected_menu_item = 0;
+		this.start_game = false;
+		this.exit_game = false;
 		
-		exitOption = Assets.instance.exitOptionAsset.resource;
-		exitMenuOption = new MenuOption();
-		exitMenuOption.setItem(MenuOption.EXIT);
+		System.out.println("SELECTED MENU ITEM: " + this.selected_menu_item);
+//		if (this.selected_menu_item == 0) {
+			startGameSelOption = Assets.instance.startGameOptionSelAsset.resource;
+			startGameMenuSelOption = new MenuOption();
+			startGameMenuSelOption.setItem(MenuOption.START_S);
+//		} else {
+			startGameOption = Assets.instance.startGameOptionAsset.resource;
+			startGameMenuOption = new MenuOption();
+			startGameMenuOption.setItem(MenuOption.START);
+//		}
+		
+		
+//		if (this.selected_menu_item == 1) {
+			exitSelOption = Assets.instance.exitOptionSelAsset.resource;
+			exitMenuSelOption = new MenuOption();
+			exitMenuSelOption.setItem(MenuOption.EXIT_S);
+//		} else {
+			exitOption = Assets.instance.exitOptionAsset.resource;
+			exitMenuOption = new MenuOption();
+			exitMenuOption.setItem(MenuOption.EXIT);
+//		}
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Const.APP_WIDTH, Const.APP_HEIGHT);
@@ -67,20 +96,32 @@ public class MainMenuScreen implements Screen {
 		
 		game.batch.begin();
 		this.mainTitleObject.draw(game.batch, this.mainTitle);
-		this.startGameMenuOption.draw(game.batch, this.startGameOption);
-		this.exitMenuOption.draw(game.batch, this.exitOption);
+		if (this.selected_menu_item == 0) {
+			this.startGameMenuSelOption.draw(game.batch, this.startGameSelOption);
+		} else {
+			this.startGameMenuOption.draw(game.batch, this.startGameOption);
+		}
+		if (this.selected_menu_item == 1) {
+			this.exitMenuSelOption.draw(game.batch, this.exitSelOption);
+		} else {
+			this.exitMenuOption.draw(game.batch, this.exitOption);
+		}
 //		game.batch.draw(mainTitle, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
-		game.font.setColor(Color.BLACK);
-		game.font.draw(game.batch, "Tap anywhere to begin", 300, 180);
+//		game.font.setColor(Color.BLACK);
+//		game.font.draw(game.batch, "Tap anywhere to begin", 300, 180);
 		game.batch.end();
 		
-		if (Gdx.input.isTouched() && game.totouch) {
+		if (this.start_game) {
+			this.start_game = false;
 			game.setScreen(new GameScreen(game));
 			mainTitleMusic.stop();
 			game.totouch = false;
-		} else if (! Gdx.input.isTouched()) {
-			game.totouch = true;
+		} else if (this.exit_game) {
+			Gdx.app.exit();
 		}
+//		else if (! Gdx.input.isTouched()) {
+//			game.totouch = true;
+//		}
 	}
 
 	@Override
