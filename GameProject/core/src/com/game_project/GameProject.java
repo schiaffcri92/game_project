@@ -1,25 +1,33 @@
 package com.game_project;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.game_project.view.Assets;
 
 public class GameProject extends Game {
 	SpriteBatch batch;
 	public BitmapFont font;
 	boolean totouch;
-//	Texture img;
+
+	public Assets assets;
 	
 	@Override
 	public void create () {
 		totouch = true;
 		batch = new SpriteBatch();
 		font = new BitmapFont();
+		Assets.instance.init(new AssetManager());
 		this.setScreen(new MainMenuScreen(this));
 //		img = new Texture("badlogic.jpg");
+	}
+	
+	public void loadAssets () {
+		
 	}
 
 	@Override
@@ -35,5 +43,6 @@ public class GameProject extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		Assets.instance.dispose();
 	}
 }

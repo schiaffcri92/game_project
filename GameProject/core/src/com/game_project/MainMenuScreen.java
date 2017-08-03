@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Music;
 import com.game_project.utils.Const;
+import com.game_project.view.Assets;
 
 public class MainMenuScreen implements Screen {
 
@@ -20,12 +21,13 @@ public class MainMenuScreen implements Screen {
 	public MainMenuScreen(final GameProject game) {
 		totouch = true;
 		this.game = game;
-		mainTitle = new Texture(Gdx.files.internal("menu-partials/title_pixelate.png"));
+		mainTitle = Assets.instance.mainTitleAsset.mainTitleTexture;
+//		mainTitle = new Texture(Gdx.files.internal("menu-partials/title_pixelate.png"));
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Const.APP_WIDTH, Const.APP_HEIGHT);
 		mainTitleMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menuTitle.mp3"));
 		mainTitleMusic.setLooping(true);
-		mainTitleMusic.play();
+//		mainTitleMusic.play();
 	}
 	
 	@Override
@@ -54,7 +56,6 @@ public class MainMenuScreen implements Screen {
 			game.totouch = false;
 		} else if (! Gdx.input.isTouched()) {
 			game.totouch = true;
-
 		}
 	}
 
