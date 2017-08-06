@@ -28,6 +28,8 @@ public class Assets implements Disposable, AssetErrorListener {
 	public ExitOptionAsset exitOptionAsset;
 	public StartGameOptionSelAsset startGameOptionSelAsset;
 	public ExitOptionSelAsset exitOptionSelAsset;
+	public MainCharAsset mainCharAsset;
+	public MainCharRunAsset mainCharRunAsset;
 	// audio effects
 	public MainMenuMusic mainMenuMusic;
 	
@@ -44,6 +46,8 @@ public class Assets implements Disposable, AssetErrorListener {
 		this.assetManager.load(Const.EXIT_OPTION_LOCATION, Texture.class);
 		this.assetManager.load(Const.START_GAME_OPTION_SEL_LOCATION, Texture.class);
 		this.assetManager.load(Const.EXIT_OPTION_SEL_LOCATION, Texture.class);
+		this.assetManager.load(Const.MAIN_CHAR_LOCATION, Texture.class);
+		this.assetManager.load(Const.MAIN_CHAR_RUN_LOCATION, Texture.class);
 		
 		this.assetManager.finishLoading();
 		Gdx.app.debug(TAG, "# of assets loaded: " + assetManager.getAssetNames().size);
@@ -57,7 +61,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		Texture exitTexture = this.assetManager.get(Const.EXIT_OPTION_LOCATION);
 		this.exitOptionAsset = new ExitOptionAsset(exitTexture);
 		
-		// selected versions
+		// selected
 		
 		Texture startGameSelTexture = this.assetManager.get(Const.START_GAME_OPTION_SEL_LOCATION);
 		this.startGameOptionSelAsset = new StartGameOptionSelAsset(startGameSelTexture);
@@ -66,6 +70,11 @@ public class Assets implements Disposable, AssetErrorListener {
 		
 		Music mainMenuMusicM = this.assetManager.get(Const.MAIN_MENU_SOUND_LOCATION);
 		this.mainMenuMusic = new MainMenuMusic(mainMenuMusicM);
+		
+		Texture mainCharTexture = this.assetManager.get(Const.MAIN_CHAR_LOCATION);
+		this.mainCharAsset = new MainCharAsset(mainCharTexture);
+		Texture mainCharRunTexture = this.assetManager.get(Const.MAIN_CHAR_RUN_LOCATION);
+		this.mainCharRunAsset = new MainCharRunAsset(mainCharRunTexture);
 		
 	}
 	
@@ -127,6 +136,22 @@ public class Assets implements Disposable, AssetErrorListener {
 		
 		public MainMenuMusic(Music mainMenuMusicM) {
 			this.resource = mainMenuMusicM;
+		}
+	}
+	
+	public class MainCharAsset {
+		public final Texture resource;
+		
+		public MainCharAsset(Texture resource) {
+			this.resource = resource;
+		}
+	}
+	
+	public class MainCharRunAsset {
+		public final Texture resource;
+		
+		public MainCharRunAsset(Texture resource) {
+			this.resource = resource;
 		}
 	}
 }

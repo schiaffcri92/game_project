@@ -34,9 +34,13 @@ public class GameScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		
 		game.batch.begin();
-//		game.font.draw(game.batch, "Welcome to GameProject", 100, 150);
+		game.font.draw(game.batch, "Game Screen", 100, 150);
+		
 //		game.font.draw(game.batch, "Tap anywhere to go back", 100, 100);
 		game.batch.end();
+		
+		
+		// Back to Main Menu
 		
 		if (Gdx.input.isTouched() && game.totouch) {
 			MainMenuScreen mainMenuScreen = new MainMenuScreen(game);

@@ -36,9 +36,13 @@ public class GameProject extends Game {
 		    System.out.println(controller.getName());
 		    this.controller = controller;
 		}
-		ControllerAdapter listener = new MainMenuControllerHandler(mainMenuScreen);
-		this.controller.addListener(listener);
-//		img = new Texture("badlogic.jpg");
+		if (this.controller != null) {
+			ControllerAdapter listener = new MainMenuControllerHandler(mainMenuScreen);
+			this.controller.addListener(listener);
+		} else {
+			// No controller plugged in
+			
+		}
 	}
 	
 	public void loadAssets () {
