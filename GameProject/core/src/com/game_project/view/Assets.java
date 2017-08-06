@@ -30,6 +30,10 @@ public class Assets implements Disposable, AssetErrorListener {
 	public ExitOptionSelAsset exitOptionSelAsset;
 	public MainCharAsset mainCharAsset;
 	public MainCharRunAsset mainCharRunAsset;
+	
+	// background textures
+	public BackgroundAsset backgroundAsset;
+	
 	// audio effects
 	public MainMenuMusic mainMenuMusic;
 	
@@ -48,6 +52,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		this.assetManager.load(Const.EXIT_OPTION_SEL_LOCATION, Texture.class);
 		this.assetManager.load(Const.MAIN_CHAR_LOCATION, Texture.class);
 		this.assetManager.load(Const.MAIN_CHAR_RUN_LOCATION, Texture.class);
+		this.assetManager.load(Const.BACKGROUND_LOCATION, Texture.class);
 		
 		this.assetManager.finishLoading();
 		Gdx.app.debug(TAG, "# of assets loaded: " + assetManager.getAssetNames().size);
@@ -76,6 +81,9 @@ public class Assets implements Disposable, AssetErrorListener {
 		Texture mainCharRunTexture = this.assetManager.get(Const.MAIN_CHAR_RUN_LOCATION);
 		this.mainCharRunAsset = new MainCharRunAsset(mainCharRunTexture);
 		
+		// background
+		Texture backgroundTexture = this.assetManager.get(Const.BACKGROUND_LOCATION);
+		this.backgroundAsset = new BackgroundAsset(backgroundTexture);
 	}
 	
 	@Override
@@ -151,6 +159,14 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final Texture resource;
 		
 		public MainCharRunAsset(Texture resource) {
+			this.resource = resource;
+		}
+	}
+	
+	public class BackgroundAsset {
+		public final Texture resource;
+		
+		public BackgroundAsset(Texture resource) {
 			this.resource = resource;
 		}
 	}

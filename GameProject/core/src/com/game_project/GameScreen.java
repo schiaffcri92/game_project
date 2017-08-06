@@ -12,12 +12,15 @@ public class GameScreen implements Screen {
 
 	final GameProject game;
 	OrthographicCamera camera;
+	World world;
 	
 	public GameScreen(final GameProject game) {
 		this.game = game;
+		this.world = new World();
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Const.APP_WIDTH, Const.APP_HEIGHT);
+		
 	}
 	
 	@Override
@@ -34,7 +37,8 @@ public class GameScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		
 		game.batch.begin();
-		game.font.draw(game.batch, "Game Screen", 100, 150);
+		this.world.render(game.batch);
+//		game.font.draw(game.batch, "Game Screen", 100, 150);
 		
 //		game.font.draw(game.batch, "Tap anywhere to go back", 100, 100);
 		game.batch.end();
