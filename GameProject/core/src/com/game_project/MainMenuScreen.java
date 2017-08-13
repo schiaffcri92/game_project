@@ -43,7 +43,18 @@ public class MainMenuScreen implements Screen {
 	public MainMenuScreen(final GameProject game) {
 		totouch = true;
 		this.game = game;
-		
+		this.init();
+	}
+//	
+//	public MainMenuScreen(final GameProject game, KeyboardAdapter keyboardAdapter) {
+//		totouch = true;
+//		this.game = game;
+//		this.keyboardAdapter = keyboardAdapter;
+//		this.initKeyboardListener();
+//		this.init();
+//	}
+	
+	public void init() {
 		mainTitle = Assets.instance.mainTitleAsset.resource;
 		mainTitleObject = new MainTitle();
 		
@@ -77,9 +88,13 @@ public class MainMenuScreen implements Screen {
 		camera.setToOrtho(false, Const.APP_WIDTH, Const.APP_HEIGHT);
 		mainTitleMusic = Assets.instance.mainMenuMusic.resource;
 		mainTitleMusic.setLooping(true);
-		mainTitleMusic.play();
-		
+//		mainTitleMusic.play();
 	}
+	
+//	public void initKeyboardListener()
+//	{
+//		
+//	}
 	
 	@Override
 	public void show() {
