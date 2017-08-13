@@ -43,13 +43,14 @@ public class GameProject extends Game {
 			this.controller.addListener(listener);
 		} else {
 			// No controller plugged in
+			MainMenuScreen mainMenuScreen = new MainMenuScreen(this);
+
 			InputMultiplexer multiplexer = new InputMultiplexer();
-			multiplexer.addProcessor(new MainMenuKeyboardHandler());
+			multiplexer.addProcessor(new MainMenuKeyboardHandler(mainMenuScreen));
 			// here you can add multiple processors
 			// then select only one for process input
 			Gdx.input.setInputProcessor(multiplexer);
 			// watch https://github.com/libgdx/libgdx/wiki/Event-handling
-			MainMenuScreen mainMenuScreen = new MainMenuScreen(this);
 			this.setScreen(mainMenuScreen);
 		}
 	}
