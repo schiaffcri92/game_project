@@ -13,7 +13,7 @@ public class Const {
 	public static final String START_GAME_OPTION_SEL_LOCATION = "menu-partials/start_game_pixelate_sel.png";
 	public static final String EXIT_OPTION_LOCATION = "menu-partials/exit_pixelate.png";
 	public static final String EXIT_OPTION_SEL_LOCATION = "menu-partials/exit_pixelate_sel.png";
-	public static final String MAIN_CHAR_LOCATION = "character/character_transparent.png";
-	public static final String MAIN_CHAR_RUN_LOCATION = "character/character_run_transparent.png";
+	public static final String MAIN_CHAR_LOCATION = "character/character_original.png";
+	public static final String MAIN_CHAR_RUN_LOCATION = "character/character_run.png";
 	public static final String BACKGROUND_LOCATION = "backgrounds/background.png";
 }

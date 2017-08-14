@@ -2,6 +2,7 @@ package com.game_project.handlers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.game_project.MainMenuScreen;
+import com.badlogic.gdx.Input.Keys;
 
 public class MainMenuKeyboardHandler implements InputProcessor {
 	
@@ -14,15 +15,16 @@ public class MainMenuKeyboardHandler implements InputProcessor {
 	public boolean keyDown (int keycode) {
 		System.out.println("BUTTON PRESSED: " + keycode);
 		switch (keycode) {
-		case 19: {
+		case Keys.DPAD_UP: {
 			mainMenuScreen.selected_menu_item = 0;
 		}
 		break;
-		case 20: {
+		case Keys.DPAD_DOWN: {
 			mainMenuScreen.selected_menu_item = 1;
 		}
 		break;
-		case 66: {
+		case Keys.ENTER: {
+			// this is a very bad implementation, FIXME
 			if (mainMenuScreen.selected_menu_item == 0) {
 				mainMenuScreen.start_game = true;
 			} else if (mainMenuScreen.selected_menu_item == 1) {
